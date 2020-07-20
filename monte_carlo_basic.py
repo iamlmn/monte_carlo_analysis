@@ -53,6 +53,7 @@ def simulate_possibilities(pv, expected_return, volatility, time_horizon, annual
 
 
 def plot_first_n_time_series(sim, n = 5):
+    plt.close() # clear old plots
     plt.plot(sim[list(range(n))])
     return plt
 
@@ -70,7 +71,7 @@ def histogram_plot(ending_values, bins = 100):
     '''
     Histogram plot to understand the distribution.
     '''
-
+    plt.close() # clear old plots
     plt.hist(ending_values, bins = 100)
     return plt
     
@@ -119,7 +120,6 @@ if __name__ == '__main__':
     sim_df = simulate_possibilities(pv, expected_return, volatility, time_horizon, annual_additions, iterations = iterations)
     sim_df.to_csv('{}/exported_sims.csv'.format(output_folder), index=False)
     plot_first_n_time_series(sim_df, n = 5).savefig('{}/first_{}_time_series_simulations.png'.format(output_folder, 5))
-    plt.close()
     print(summary_stats(sim_df, time_horizon - 1))
     ending_values = sim_df.loc[time_horizon - 1]
     # get_probs_my_value(ending_values, sample_expected_amount = 1000000)
