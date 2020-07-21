@@ -115,7 +115,7 @@ if __name__ == '__main__':
     print("Now lets try Monte carlo simulation analysis")
     # set up expected returns and its volatility.
     expected_return = 0.09
-    volatility = 0.18
+    volatility = 0.18 # nothing but SD.
     iterations = 5000
     sim_df = simulate_possibilities(pv, expected_return, volatility, time_horizon, annual_additions, iterations = iterations)
     sim_df.to_csv('{}/exported_sims.csv'.format(output_folder), index=False)
